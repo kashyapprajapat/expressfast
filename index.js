@@ -4,12 +4,7 @@ const port = process.env.PORT || 3000;
 const Apidocify = require('apidocify');
 
 
-// Initialize apidocify
-new Apidocify(app, {
-  docsPath: '/docs',
-  title: 'express fast api calalculate from 1 to 1cr & 1 to 10cr',
-  version: '1.0.0'
-});
+
 
 // Route 1: whoisfast (sum from 1 to 100,000,000)
 app.get('/whoisfast', (req, res) => {
@@ -31,6 +26,14 @@ function sumRange(start, end) {
   }
   return total;
 }
+
+// Initialize apidocify after defining routes
+new Apidocify(app, {
+  docsPath: '/docs',
+  title: 'express fast api calalculate from 1 to 1cr & 1 to 10cr',
+  version: '1.0.0'
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
